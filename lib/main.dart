@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_notification/home.dart';
+//import 'package:cloud_firestore/cloud_firestore.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
@@ -46,6 +47,12 @@ Future<void> main() async {
   //If subscribe based sent notification then use this token
   final fcmToken = await messaging.getToken();
   print(fcmToken);
+
+  //FirebaseFirestore firestore = FirebaseFirestore.instance;
+  //firestore.collection('messeges').add(
+  //    {'sender': "luckshim@univ.me",
+  //      'text': fcmToken}
+  //);
 
   //If subscribe based on topic then use this
   await messaging.subscribeToTopic('flutter_notification');
